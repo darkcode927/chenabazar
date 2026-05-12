@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --color-primary: #7C3AED;
 }
 
 @theme inline {
@@ -22,5 +23,20 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif, system-ui;
+  font-family: var(--font-geist-sans);
+}
+
+.input {
+  @apply w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2;
+  focus-ring-color: var(--color-primary);
+}
+
+.btn-primary {
+  @apply text-white py-3 rounded-lg font-medium transition;
+  background: var(--color-primary);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
 }
