@@ -20,7 +20,7 @@ export const dynamic = "force-dynamic";
 // 🔥 Fetch Products
 async function getProducts(): Promise<Product[]> {
   try {
-    const res = await fetch("http://localhost:3000/api/products", {
+    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/products`, {
       cache: "no-store",
     });
 
@@ -94,7 +94,10 @@ export default async function HomePage() {
       </section>
 
       {/* 🔥 NEW ARRIVALS */}
-      <section id="new" className="bg-gradient-to-b from-white to-pink-50 py-20">
+      <section
+        id="new"
+        className="bg-gradient-to-b from-white to-pink-50 py-20"
+      >
         <div className="max-w-7xl mx-auto px-4">
           <NewArrivals product={products.slice(0, 4)} />
         </div>
@@ -107,7 +110,6 @@ export default async function HomePage() {
 
       {/* 🔥 AI RECOMMENDATION */}
       <section className="relative py-20 overflow-hidden">
-
         <div className="absolute inset-0 bg-gradient-to-r from-sky-100 via-white to-pink-100 opacity-70" />
 
         <div className="relative max-w-7xl mx-auto px-4">
