@@ -60,13 +60,13 @@ export default async function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-red-100 via-pink-100 to-orange-100 opacity-60" />
 
         <div className="relative max-w-7xl mx-auto px-4">
-          <FlashSale products={products.slice(0, 4)} />
+          <FlashSale product={products.slice(0, 4)} />
         </div>
       </section>
 
       {/* 🔥 TRENDING PRODUCTS */}
       <section id="trending" className="max-w-7xl mx-auto px-4 py-20">
-        <TrendingProducts products={products.slice(0, 4)} />
+        <TrendingProducts product={products.slice(0, 4)} />
       </section>
 
       {/* 🔥 Recently Viewed */}
@@ -89,7 +89,7 @@ export default async function HomePage() {
         <div className="absolute bottom-0 right-0 w-72 h-72 bg-sky-200/30 blur-3xl rounded-full" />
 
         <div className="relative max-w-7xl mx-auto px-4">
-          <FeaturedProducts products={products.slice(0, 4)} />
+          <FeaturedProducts product={products.slice(0, 4)} />
         </div>
       </section>
 
@@ -113,7 +113,7 @@ export default async function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-sky-100 via-white to-pink-100 opacity-70" />
 
         <div className="relative max-w-7xl mx-auto px-4">
-          <AIRecommendation products={products.slice(0, 4)} />
+          <AIRecommendation product={products.slice(0, 4)} />
         </div>
       </section>
 

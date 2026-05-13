@@ -22,11 +22,11 @@ import { Product } from "@/types";
 import { useCartStore } from "@/store/cartStore";
 
 type AIRecommendationProps = {
-  products: Product[];
+  product: Product[];
 };
 
 export default function AIRecommendation({
-  products,
+  product,
 }: AIRecommendationProps) {
   const addToCart = useCartStore((s) => s.addToCart);
 
@@ -100,7 +100,7 @@ export default function AIRecommendation({
               1024: { slidesPerView: 2.2 },
             }}
           >
-            {products.map((product) => (
+            {product.map((product) => (
               <SwiperSlide key={product._id}>
 
                 <motion.div

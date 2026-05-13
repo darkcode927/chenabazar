@@ -12,10 +12,10 @@ import { FaBolt, FaClock, FaFire, FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 
 interface FlashSaleProps {
-  products: Product[];
+  product: Product[];
 }
 
-export default function FlashSale({ products }: FlashSaleProps) {
+export default function FlashSale({ product }: FlashSaleProps) {
   // 🔥 Countdown Timer
   const [timeLeft, setTimeLeft] = useState({
     hours: 12,
@@ -240,7 +240,7 @@ export default function FlashSale({ products }: FlashSaleProps) {
         </motion.div>
 
         {/* 🔥 Products */}
-        {products.length === 0 ? (
+        {product.length === 0 ? (
           <div className="bg-white rounded-[2rem] p-16 text-center shadow-xl border border-red-100">
             <div className="mx-auto h-24 w-24 rounded-full bg-red-100 flex items-center justify-center text-red-500 text-4xl">
               <FaFire />
@@ -256,7 +256,7 @@ export default function FlashSale({ products }: FlashSaleProps) {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
-            {products.map((product, index) => (
+            {product.map((product, index) => (
               <motion.div
                 key={product._id}
                 initial={{

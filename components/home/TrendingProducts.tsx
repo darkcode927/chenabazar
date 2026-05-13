@@ -62,15 +62,15 @@ const trendingProducts = [
   },
 ];
 interface TrendingProductsProps {
-  products: Product[];
+  product: Product[];
 }
 
-export default function TrendingProducts({ products }: TrendingProductsProps) {
+export default function TrendingProducts({ product }: TrendingProductsProps) {
   const addToCart = useCartStore((state) => state.addToCart);
   const [added, setAdded] = useState(false);
 
   const handleAddToCart = () => {
-    addToCart(products);
+    addToCart(product);
     setAdded(true);
 
     // Reset after 1.5s
@@ -128,7 +128,7 @@ export default function TrendingProducts({ products }: TrendingProductsProps) {
         {/* Product Grid */}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
-          {products.map((product, index) => (
+          {product.map((product, index) => (
             <motion.div
               key={product._id}
               initial={{

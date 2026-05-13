@@ -12,15 +12,15 @@ import {
 } from "react-icons/fa";
 
 interface FeaturedProductsProps {
-  products: Product[];
+  product: Product[];
 }
 
 export default function FeaturedProducts({
-  products,
+  product,
 }: FeaturedProductsProps) {
 
   // 🔥 Duplicate for infinite slider
-  const sliderProducts = [...products, ...products];
+  const sliderProducts = [...product, ...product];
 
   return (
     <section className="relative overflow-hidden py-10">
@@ -66,7 +66,7 @@ export default function FeaturedProducts({
         </div>
 
         {/* 🔥 Empty State */}
-        {products.length === 0 ? (
+        {product.length === 0 ? (
           <div className="bg-white rounded-3xl border p-16 text-center shadow-xl">
 
             <div className="text-6xl">
