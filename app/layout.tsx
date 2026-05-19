@@ -91,14 +91,20 @@ export default function RootLayout({
       <body
         className="
           min-h-screen
+          bg-background
+          text-foreground
           bg-gradient-to-b
           from-white
           via-pink-50/30
           to-white
-          text-gray-900
+          dark:from-gray-950
+          dark:via-gray-900
+          dark:to-gray-950
           antialiased
           overflow-x-hidden
           font-sans
+          transition-colors
+          duration-300
         "
       >
         {/* 🔥 Background Effects */}
@@ -112,6 +118,7 @@ export default function RootLayout({
               w-[350px]
               h-[350px]
               bg-pink-300/20
+              dark:bg-pink-500/10
               rounded-full
               blur-3xl
             "
@@ -126,6 +133,7 @@ export default function RootLayout({
               w-[300px]
               h-[300px]
               bg-red-300/20
+              dark:bg-red-500/10
               rounded-full
               blur-3xl
             "
@@ -140,6 +148,7 @@ export default function RootLayout({
               w-[400px]
               h-[400px]
               bg-orange-200/20
+              dark:bg-orange-500/10
               rounded-full
               blur-3xl
             "

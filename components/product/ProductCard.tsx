@@ -17,72 +17,75 @@ export default function ProductCard({ product }: Props) {
   const handleAddToCart = () => {
     addToCart(product);
     setAdded(true);
-
-    // Reset after 1.5s
     setTimeout(() => setAdded(false), 1500);
   };
 
   return (
-    <div className="group relative bg-white rounded-2xl overflow-hidden border shadow-sm hover:shadow-2xl transition duration-300">
-      {/* ❤️ Wishlist */}
-      <button className="absolute top-3 right-3 z-10 bg-white/90 backdrop-blur p-2 rounded-full shadow hover:bg-pink-100 transition">
-        <FaHeart className="text-gray-500 hover:text-pink-500" />
+    <div className="group relative w-full overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-300 hover:shadow-2xl dark:border-gray-800 dark:bg-gray-900">
+      <button
+        type="button"
+        className="absolute top-2 right-2 z-10 rounded-full bg-white/90 p-2 shadow backdrop-blur transition hover:bg-pink-100 dark:bg-gray-800/90 dark:hover:bg-pink-900/40 sm:top-3 sm:right-3"
+        aria-label="Add to wishlist"
+      >
+        <FaHeart className="text-gray-500 hover:text-pink-500 dark:text-gray-300" />
       </button>
 
-      {/* 🖼 Image */}
       <Link href={`/products/${product._id}`}>
-        <div className="relative w-full h-64 overflow-hidden">
+        <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-square md:h-56 md:aspect-auto lg:h-64">
           <Image
             src={product.image?.trim() ? product.image : "/placeholder.png"}
             alt={product.name || "Product Image"}
             fill
-            className="object-cover group-hover:scale-110 transition duration-500"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            className="object-cover transition duration-500 group-hover:scale-110"
           />
 
-          {/* 🔥 FLASH SALE BADGE */}
           {product.flashSale && (
-            <span className="absolute top-3 left-3 bg-red-500 text-white px-3 py-1 text-xs rounded-full z-10 shadow">
+            <span className="absolute top-2 left-2 z-10 rounded-full bg-red-500 px-2 py-1 text-[10px] text-white shadow sm:top-3 sm:left-3 sm:px-3 sm:text-xs">
               🔥 Flash Sale
             </span>
           )}
 
-          {/* Overlay Actions */}
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100">
+          <div className="absolute inset-0 flex items-center justify-center gap-3 bg-black/0 opacity-0 transition group-hover:bg-black/20 group-hover:opacity-100">
             <button
-              onClick={handleAddToCart}
-              className="bg-white p-3 rounded-full shadow hover:bg-pink-600 hover:text-white transition"
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                handleAddToCart();
+              }}
+              className="rounded-full bg-white p-2 shadow transition hover:bg-pink-600 hover:text-white sm:p-3"
+              aria-label="Add to cart"
             >
               <FaShoppingCart />
             </button>
-
-            <div className="bg-white p-3 rounded-full shadow">
+            <span className="rounded-full bg-white p-2 shadow sm:p-3">
               <FaEye />
-            </div>
+            </span>
           </div>
         </div>
       </Link>
 
-      {/* 📄 Content */}
-      <div className="p-4 space-y-2">
-        {/* Name */}
-        <h2 className="font-semibold text-lg line-clamp-1 group-hover:text-pink-600 transition">
+      <div className="space-y-2 p-3 sm:p-4">
+        <h2 className="line-clamp-2 text-sm font-semibold transition group-hover:text-pink-600 sm:text-base md:line-clamp-1 md:text-lg dark:group-hover:text-pink-400">
           {product.name}
         </h2>
 
-        {/* Category */}
-        <p className="text-xs text-gray-500 capitalize">{product.category}</p>
+        <p className="text-xs capitalize text-gray-500 dark:text-gray-400">
+          {product.category}
+        </p>
 
-        {/* Price */}
-        <p className="text-pink-600 font-bold text-xl">৳ {product.price}</p>
+        <p className="text-lg font-bold text-pink-600 sm:text-xl dark:text-pink-400">
+          ৳ {product.price}
+        </p>
 
-        {/* Bottom Actions */}
-        <div className="flex gap-2 pt-2">
+        <div className="flex gap-2 pt-1 sm:pt-2">
           <button
+            type="button"
             onClick={handleAddToCart}
-            className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-lg transition ${
+            className={`flex flex-1 items-center justify-center gap-1.5 rounded-lg py-2 text-xs transition sm:gap-2 sm:text-sm ${
               added
                 ? "bg-green-500 text-white"
-                : "bg-pink-600 text-white hover:bg-pink-700"
+                : "bg-pink-600 text-white hover:bg-pink-700 dark:bg-pink-500 dark:hover:bg-pink-600"
             }`}
           >
             {added ? (
@@ -98,7 +101,8 @@ export default function ProductCard({ product }: Props) {
 
           <Link
             href={`/products/${product._id}`}
-            className="flex items-center justify-center px-3 py-2 border rounded-lg hover:bg-gray-100 transition"
+            className="flex items-center justify-center rounded-lg border border-gray-200 px-3 py-2 transition hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800"
+            aria-label="View product"
           >
             <FaEye />
           </Link>

@@ -14,6 +14,8 @@ import {
 import { useCartStore } from "@/store/cartStore";
 import { useState } from "react";
 import { useProducts } from "@/hooks/useProducts";
+import ProductGridSkeleton from "@/components/ui/ProductGridSkeleton";
+import { PRODUCT_GRID_CLASS } from "@/lib/product-grid";
 import { Product } from "@/types";
 
 export default function TrendingProducts() {
@@ -80,16 +82,9 @@ export default function TrendingProducts() {
         {/* Product Grid */}
 
         {loading ? (
-          <motion.div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
-            {Array.from({ length: 4 }).map((_, i) => (
-              <motion.div
-                key={i}
-                className="h-[420px] rounded-[32px] bg-white/60 animate-pulse border"
-              />
-            ))}
-          </motion.div>
+          <ProductGridSkeleton count={4} />
         ) : (
-        <motion.div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
+        <motion.div className={PRODUCT_GRID_CLASS}>
           {product.map((product, index) => (
             <motion.div
               key={product._id}
@@ -106,7 +101,7 @@ export default function TrendingProducts() {
                 delay: index * 0.1,
               }}
               viewport={{ once: true }}
-              className="group relative overflow-hidden rounded-[32px] border border-white/40 bg-white/80 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
+              className="group relative overflow-hidden rounded-[32px] border border-white/40 bg-white/80 shadow-lg backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl dark:border-gray-700 dark:bg-gray-900/80"
             >
               {/* Product Image */}
               <Link href={`/products/${product._id}`}>

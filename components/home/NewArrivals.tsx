@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import { FaArrowRight, FaBolt } from "react-icons/fa";
 import { useCartStore } from "@/store/cartStore";
 import { useProducts } from "@/hooks/useProducts";
+import ProductGridSkeleton from "@/components/ui/ProductGridSkeleton";
+import { PRODUCT_GRID_CLASS } from "@/lib/product-grid";
 
 export default function NewArrivals() {
   const { products, loading } = useProducts({ limit: 8 });
@@ -48,16 +50,9 @@ export default function NewArrivals() {
 
         {/* Product Grid */}
         {loading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
-            {Array.from({ length: 4 }).map((_, i) => (
-              <motion.div
-                key={i}
-                className="h-96 rounded-[32px] bg-white/60 animate-pulse border"
-              />
-            ))}
-          </div>
+          <ProductGridSkeleton count={8} />
         ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
+        <div className={PRODUCT_GRID_CLASS}>
           {products.map((product, index) => (
             <motion.div
               key={product._id}

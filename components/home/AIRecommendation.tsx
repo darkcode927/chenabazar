@@ -20,6 +20,7 @@ import "swiper/css";
 
 import { useCartStore } from "@/store/cartStore";
 import { useProducts } from "@/hooks/useProducts";
+import ProductGridSkeleton from "@/components/ui/ProductGridSkeleton";
 
 export default function AIRecommendation() {
   const { products: product, loading } = useProducts({ limit: 4 });
@@ -85,14 +86,7 @@ export default function AIRecommendation() {
         <div className="w-full lg:max-w-2xl">
 
           {loading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {Array.from({ length: 2 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="h-72 rounded-[2rem] bg-white/10 animate-pulse"
-                />
-              ))}
-            </div>
+            <ProductGridSkeleton count={2} className="!grid-cols-1 sm:!grid-cols-2" />
           ) : (
           <Swiper
             modules={[Autoplay]}

@@ -13,12 +13,13 @@ import BrandShowcase from "@/components/home/BrandShowcase";
 import AIRecommendation from "@/components/home/AIRecommendation";
 import InstagramFeed from "@/components/home/InstagramFeed";
 import MobileAppSection from "@/components/home/MobileAppSection";
+import { theme } from "@/lib/theme";
 
 export const dynamic = "force-dynamic";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen overflow-hidden bg-gradient-to-b from-pink-50 via-white to-gray-100">
+    <main className={`overflow-hidden ${theme.shopPage}`}>
       <HeroSection />
 
       <div className="relative z-30 -mt-10 px-4">
@@ -58,7 +59,7 @@ export default function HomePage() {
 
       <section
         id="new"
-        className="bg-gradient-to-b from-white to-pink-50 py-20"
+        className="bg-gradient-to-b from-white to-pink-50 py-20 dark:from-gray-900 dark:to-gray-950"
       >
         <div className="max-w-7xl mx-auto px-4">
           <NewArrivals />
@@ -76,7 +77,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-white border-y py-20">
+      <section className="border-y border-gray-200 bg-white py-20 dark:border-gray-800 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <BenefitsSection />
         </div>

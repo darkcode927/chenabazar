@@ -9,6 +9,8 @@ import ProductCard from "@/components/product/ProductCard";
 import { FaBolt, FaClock, FaFire, FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 import { useProducts } from "@/hooks/useProducts";
+import ProductGridSkeleton from "@/components/ui/ProductGridSkeleton";
+import { PRODUCT_GRID_CLASS } from "@/lib/product-grid";
 
 export default function FlashSale() {
   const { products: allProducts, loading } = useProducts();
@@ -240,20 +242,9 @@ export default function FlashSale() {
 
         {/* 🔥 Products */}
         {loading ? (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8"
-          >
-            {Array.from({ length: 4 }).map((_, i) => (
-              <motion.div
-                key={i}
-                className="h-96 rounded-3xl bg-white/60 animate-pulse border border-red-100"
-              />
-            ))}
-          </motion.div>
+          <ProductGridSkeleton count={4} />
         ) : product.length === 0 ? (
-          <div className="bg-white rounded-[2rem] p-16 text-center shadow-xl border border-red-100">
+          <div className="rounded-[2rem] border border-red-100 bg-white p-16 text-center shadow-xl dark:border-red-900/50 dark:bg-gray-900">
             <div className="mx-auto h-24 w-24 rounded-full bg-red-100 flex items-center justify-center text-red-500 text-4xl">
               <FaFire />
             </div>
@@ -267,7 +258,7 @@ export default function FlashSale() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
+          <motion.div className={PRODUCT_GRID_CLASS}>
             {product.map((product, index) => (
               <motion.div
                 key={product._id}
@@ -290,9 +281,10 @@ export default function FlashSale() {
                 <ProductCard product={product} />
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
       </div>
     </section>
   );
 }
+

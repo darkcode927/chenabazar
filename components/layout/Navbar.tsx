@@ -17,6 +17,8 @@ import {
 import { useCartStore } from "@/store/cartStore";
 import { useSearchStore } from "@/store/searchStore";
 import CartDrawer from "@/components/cart/CartDrawer";
+import ThemeToggle from "@/components/layout/ThemeToggle";
+import BrandLogo from "@/components/layout/BrandLogo";
 
 export default function Navbar() {
   const { data: session } = useSession();
@@ -53,30 +55,25 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 backdrop-blur-lg bg-white/80 border-b shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <nav className="sticky top-0 z-50 border-b border-gray-200 bg-white/80 shadow-sm backdrop-blur-lg dark:border-gray-800 dark:bg-gray-950/80">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
 
-          {/* 🔥 LEFT: LOGO */}
-          <Link
-            href="/"
-            className="text-2xl font-black bg-linear-to-r from-pink-500 to-red-500 bg-clip-text text-transparent"
-          >
-            Chena Bazar
-          </Link>
+          <BrandLogo size="sm" className="shrink-0 sm:hidden" showText={false} />
+          <BrandLogo size="md" className="hidden shrink-0 sm:inline-flex" />
 
           {/* 🔥 CENTER: SEARCH (DESKTOP) */}
-          <div className="hidden md:flex items-center bg-gray-100 px-4 py-2 rounded-xl w-100">
+          <div className="hidden md:flex w-full max-w-md items-center rounded-xl bg-gray-100 px-4 py-2 dark:bg-gray-800">
             <FaSearch className="text-gray-400 mr-2" />
             <input
               onFocus={openSearch}
               type="text"
               placeholder="Search products..."
-              className="bg-transparent outline-none w-full"
+              className="w-full bg-transparent text-gray-900 outline-none dark:text-gray-100"
             />
           </div>
 
           {/* 🔥 RIGHT SIDE */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3 sm:gap-5">
 
             {/* 🔥 EXPLORE DROPDOWN */}
             <div 
@@ -105,7 +102,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 8, scale: 0.95 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute left-0 mt-2 w-64 bg-white shadow-xl rounded-xl p-4 z-50"
+                    className="absolute left-0 z-50 mt-2 w-64 rounded-xl border border-gray-200 bg-white p-4 shadow-xl dark:border-gray-700 dark:bg-gray-900"
                   >
                     <div className="grid grid-cols-2 gap-4 text-sm">
 
@@ -204,10 +201,12 @@ export default function Navbar() {
             {/* 🔥 MOBILE SEARCH */}
             <button
               onClick={openSearch}
-              className="md:hidden text-xl text-gray-700 hover:text-pink-500"
+              className="text-xl text-gray-700 hover:text-pink-500 md:hidden dark:text-gray-300"
             >
               <FaSearch />
             </button>
+
+            <ThemeToggle />
 
             {/* 🔥 CART */}
             <button
@@ -263,7 +262,7 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.95 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute right-0 mt-2 w-52 bg-white shadow-xl rounded-xl p-3 z-50"
+                      className="absolute right-0 z-50 mt-2 w-52 rounded-xl border border-gray-200 bg-white p-3 shadow-xl dark:border-gray-700 dark:bg-gray-900"
                     >
                       <button
                         onClick={() => handleNavigation(dashboardHref)}

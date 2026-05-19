@@ -54,11 +54,11 @@ export default async function DashboardPage() {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
         
         <div>
-          <h1 className="text-4xl font-black text-gray-800">
+          <h1 className="text-4xl font-black text-gray-800 dark:text-white">
             Admin Dashboard
           </h1>
 
-          <p className="text-gray-500 mt-2">
+          <p className="mt-2 text-gray-500 dark:text-gray-400">
             Welcome back 👋 Manage your store professionally.
           </p>
         </div>
@@ -75,7 +75,7 @@ export default async function DashboardPage() {
 
           <Link
             href="/admin/orders"
-            className="bg-white border px-5 py-3 rounded-2xl font-semibold hover:bg-gray-100 transition"
+            className="rounded-2xl border border-gray-200 bg-white px-5 py-3 font-semibold transition hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
           >
             View Orders
           </Link>

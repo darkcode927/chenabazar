@@ -63,19 +63,16 @@ export default function FeaturedProducts() {
 
         {/* 🔥 Empty State */}
         {loading ? (
-          <motion.div
-            animate={{ opacity: 1 }}
-            className="flex gap-6 overflow-hidden"
-          >
+          <div className="flex gap-4 overflow-hidden sm:gap-6">
             {Array.from({ length: 4 }).map((_, i) => (
               <div
                 key={i}
-                className="min-w-[280px] h-96 rounded-3xl bg-white/60 animate-pulse border"
+                className="min-w-[220px] h-80 shrink-0 rounded-3xl border border-gray-200 bg-white/60 animate-pulse dark:border-gray-800 dark:bg-gray-900/60 sm:min-w-[280px] sm:h-96 md:min-w-[320px]"
               />
             ))}
-          </motion.div>
+          </div>
         ) : product.length === 0 ? (
-          <div className="bg-white rounded-3xl border p-16 text-center shadow-xl">
+          <div className="rounded-3xl border border-gray-200 bg-white p-16 text-center shadow-xl dark:border-gray-800 dark:bg-gray-900">
 
             <div className="text-6xl">
               🛍️
@@ -114,7 +111,7 @@ export default function FeaturedProducts() {
                     y: -10,
                     scale: 1.02,
                   }}
-                  className="min-w-[280px] sm:min-w-[320px]"
+                  className="min-w-[220px] shrink-0 sm:min-w-[280px] md:min-w-[320px]"
                 >
                   <ProductCard product={product} />
                 </motion.div>

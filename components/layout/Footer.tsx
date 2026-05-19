@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import BrandLogo from "@/components/layout/BrandLogo";
 import {
   FaFacebookF,
   FaInstagram,
@@ -17,7 +18,7 @@ import {
 ================================ */
 function MobileBottomNav() {
   return (
-    <div className="fixed bottom-0 left-0 w-full bg-black text-white flex justify-around py-3 z-50 md:hidden border-t border-gray-800">
+    <div className="fixed bottom-0 left-0 z-50 flex w-full justify-around border-t border-gray-200 bg-white py-3 text-gray-800 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-100 md:hidden">
       <Link href="/" className="flex flex-col items-center text-xs">
         <FaHome />
         Home
@@ -56,13 +57,15 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-gradient-to-br from-black via-gray-900 to-black text-white mt-20">
+      <footer className="mt-20 border-t border-gray-800 bg-gradient-to-br from-gray-900 via-gray-950 to-black text-white dark:from-black dark:via-gray-950 dark:to-gray-900">
         {/* 🔥 TOP GRID */}
         <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
           {/* 🏷 BRAND */}
           <div className="col-span-2 lg:col-span-1">
-            <h2 className="text-2xl font-black mb-4">Chena Bazar</h2>
-            <p className="text-gray-400 text-sm leading-relaxed">
+            <div className="mb-4 [&_span]:!text-white">
+              <BrandLogo size="md" href="/" />
+            </div>
+            <p className="text-sm leading-relaxed text-gray-400">
               Premium online shopping platform for fashion, gadgets & lifestyle
               products.
             </p>
