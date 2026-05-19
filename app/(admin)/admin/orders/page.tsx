@@ -43,11 +43,11 @@ export default async function OrdersPage() {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
         
         <div>
-          <h1 className="text-4xl font-black text-gray-800">
+          <h1 className="text-4xl font-black text-gray-800 dark:text-white">
             Order Management
           </h1>
 
-          <p className="text-gray-500 mt-2">
+          <p className="text-gray-500 dark:text-gray-400 mt-2">
             Manage all customer orders professionally 🚀
           </p>
         </div>
@@ -149,17 +149,17 @@ export default async function OrdersPage() {
       </div>
 
       {/* 🔥 Orders Table */}
-      <div className="bg-white rounded-3xl shadow-sm border overflow-hidden">
+      <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-sm border dark:border-gray-700 overflow-hidden">
         
         {/* Table Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b">
+        <div className="flex items-center justify-between px-6 py-5 border-b dark:border-gray-700">
           
           <div>
-            <h2 className="text-2xl font-black text-gray-800">
+            <h2 className="text-2xl font-black text-gray-800 dark:text-white">
               Recent Orders
             </h2>
 
-            <p className="text-gray-500 text-sm mt-1">
+            <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
               Latest orders from customers
             </p>
           </div>
@@ -170,7 +170,7 @@ export default async function OrdersPage() {
           
           <table className="w-full text-sm">
             
-            <thead className="bg-gray-50 text-gray-600">
+            <thead className="bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300">
               <tr>
                 <th className="p-5 text-left font-semibold">
                   Customer
@@ -207,7 +207,7 @@ export default async function OrdersPage() {
               {orders.map((order: any) => (
                 <tr
                   key={order._id}
-                  className="border-t hover:bg-gray-50 transition-all duration-200"
+                  className="border-t dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200"
                 >
                   
                   {/* Customer */}
@@ -215,16 +215,16 @@ export default async function OrdersPage() {
                     
                     <div className="space-y-1">
                       
-                      <h3 className="font-bold text-gray-800">
+                      <h3 className="font-bold text-gray-800 dark:text-white">
                         {order.customer?.name}
                       </h3>
 
-                      <div className="flex items-center gap-2 text-gray-500 text-xs">
+                      <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-xs">
                         <FaPhoneAlt />
                         {order.customer?.phone}
                       </div>
 
-                      <div className="flex items-center gap-2 text-gray-400 text-xs">
+                      <div className="flex items-center gap-2 text-gray-400 dark:text-gray-500 text-xs">
                         <FaMapMarkerAlt />
                         {order.customer?.address}
                       </div>
@@ -233,14 +233,14 @@ export default async function OrdersPage() {
 
                   {/* Tracking */}
                   <td className="p-5">
-                    <span className="bg-gray-100 px-3 py-2 rounded-xl text-xs font-semibold text-gray-700">
+                    <span className="bg-gray-100 dark:bg-gray-800 px-3 py-2 rounded-xl text-xs font-semibold text-gray-700 dark:text-gray-300">
                       {order.trackingId}
                     </span>
                   </td>
 
                   {/* Amount */}
                   <td className="p-5">
-                    <p className="font-black text-lg text-pink-600">
+                    <p className="font-black text-lg text-pink-600 dark:text-pink-400">
                       ৳ {order.totalAmount}
                     </p>
                   </td>
@@ -252,16 +252,16 @@ export default async function OrdersPage() {
                         
                         ${
                           order.status === "confirmed"
-                            ? "bg-green-100 text-green-600"
+                            ? "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400"
                             : order.status === "pending"
-                            ? "bg-yellow-100 text-yellow-600"
+                            ? "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400"
                             : order.status === "processing"
-                            ? "bg-blue-100 text-blue-600"
+                            ? "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
                             : order.status === "shipped"
-                            ? "bg-purple-100 text-purple-600"
+                            ? "bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400"
                             : order.status === "delivered"
-                            ? "bg-emerald-100 text-emerald-600"
-                            : "bg-red-100 text-red-600"
+                            ? "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400"
+                            : "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
                         }
                       `}
                     >
@@ -278,15 +278,15 @@ export default async function OrdersPage() {
                           
                           ${
                             order.paymentStatus === "paid"
-                              ? "bg-green-100 text-green-600"
-                              : "bg-red-100 text-red-600"
+                              ? "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400"
+                              : "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
                           }
                         `}
                       >
                         {order.paymentStatus}
                       </span>
 
-                      <p className="text-xs text-gray-400">
+                      <p className="text-xs text-gray-400 dark:text-gray-500">
                         {order.paymentMethod}
                       </p>
                     </div>
@@ -296,13 +296,13 @@ export default async function OrdersPage() {
                   <td className="p-5">
                     <div className="space-y-1">
                       
-                      <p className="font-medium text-gray-700">
+                      <p className="font-medium text-gray-700 dark:text-gray-300">
                         {new Date(
                           order.createdAt
                         ).toLocaleDateString()}
                       </p>
 
-                      <p className="text-xs text-gray-400">
+                      <p className="text-xs text-gray-400 dark:text-gray-500">
                         {new Date(
                           order.createdAt
                         ).toLocaleTimeString()}
@@ -318,12 +318,12 @@ export default async function OrdersPage() {
                       <Link
                         href={`/track/${order.trackingId}`}
                         target="_blank"
-                        className="bg-blue-50 hover:bg-blue-100 text-blue-600 p-3 rounded-xl transition"
+                        className="bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-blue-600 dark:text-blue-400 p-3 rounded-xl transition"
                       >
                         <FaEye />
                       </Link>
 
-                      <button className="bg-purple-50 hover:bg-purple-100 text-purple-600 p-3 rounded-xl transition">
+                      <button className="bg-purple-50 dark:bg-purple-900/30 hover:bg-purple-100 dark:hover:bg-purple-900/50 text-purple-600 dark:text-purple-400 p-3 rounded-xl transition">
                         <FaTruck />
                       </button>
                     </div>
@@ -338,11 +338,11 @@ export default async function OrdersPage() {
         {orders.length === 0 && (
           <div className="p-20 text-center">
             
-            <h2 className="text-2xl font-black text-gray-700">
+            <h2 className="text-2xl font-black text-gray-700 dark:text-gray-200">
               No Orders Found
             </h2>
 
-            <p className="text-gray-500 mt-2">
+            <p className="text-gray-500 dark:text-gray-400 mt-2">
               Customer orders will appear here.
             </p>
           </div>

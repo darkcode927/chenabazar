@@ -194,23 +194,23 @@ export default async function DashboardPage() {
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
         
         {/* 🔥 Recent Orders */}
-        <div className="xl:col-span-2 bg-white rounded-3xl shadow-sm border p-6">
+        <div className="xl:col-span-2 bg-white dark:bg-gray-900 rounded-3xl shadow-sm border dark:border-gray-700 p-6">
           
           <div className="flex items-center justify-between mb-6">
             
             <div>
-              <h2 className="text-2xl font-black text-gray-800">
+              <h2 className="text-2xl font-black text-gray-800 dark:text-white">
                 Recent Orders
               </h2>
 
-              <p className="text-gray-500 text-sm mt-1">
+              <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
                 Latest customer purchases
               </p>
             </div>
 
             <Link
               href="/admin/orders"
-              className="text-pink-600 font-semibold hover:underline"
+              className="text-pink-600 dark:text-pink-400 font-semibold hover:underline"
             >
               View All
             </Link>
@@ -221,26 +221,26 @@ export default async function DashboardPage() {
             {recentOrders.map((order: any) => (
               <div
                 key={order._id}
-                className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-5 rounded-2xl border hover:bg-gray-50 transition"
+                className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-5 rounded-2xl border dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition"
               >
                 
                 <div>
-                  <h3 className="font-bold text-gray-800">
+                  <h3 className="font-bold text-gray-800 dark:text-white">
                     {order.customer?.name}
                   </h3>
 
-                  <p className="text-sm text-gray-500 mt-1">
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                     {order.customer?.phone}
                   </p>
 
-                  <p className="text-xs text-gray-400 mt-2">
+                  <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
                     {order.trackingId}
                   </p>
                 </div>
 
                 <div className="flex flex-col md:items-end gap-2">
                   
-                  <p className="font-black text-lg text-pink-600">
+                  <p className="font-black text-lg text-pink-600 dark:text-pink-400">
                     ৳ {order.totalAmount}
                   </p>
 
@@ -248,12 +248,12 @@ export default async function DashboardPage() {
                     className={`px-3 py-1 rounded-full text-xs font-semibold w-fit
                       ${
                         order.status === "confirmed"
-                          ? "bg-green-100 text-green-600"
+                          ? "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400"
                           : order.status === "pending"
-                          ? "bg-yellow-100 text-yellow-600"
+                          ? "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400"
                           : order.status === "shipped"
-                          ? "bg-blue-100 text-blue-600"
-                          : "bg-gray-100 text-gray-600"
+                          ? "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
+                          : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
                       }
                     `}
                   >
@@ -266,16 +266,16 @@ export default async function DashboardPage() {
         </div>
 
         {/* 🔥 Recent Users */}
-        <div className="bg-white rounded-3xl shadow-sm border p-6">
+        <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-sm border dark:border-gray-700 p-6">
           
           <div className="flex items-center justify-between mb-6">
             
             <div>
-              <h2 className="text-2xl font-black text-gray-800">
+              <h2 className="text-2xl font-black text-gray-800 dark:text-white">
                 Recent Users
               </h2>
 
-              <p className="text-gray-500 text-sm mt-1">
+              <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
                 Newly joined customers
               </p>
             </div>
@@ -288,20 +288,20 @@ export default async function DashboardPage() {
             {recentUsers.map((user: any) => (
               <div
                 key={user._id}
-                className="flex items-center justify-between p-4 border rounded-2xl hover:bg-gray-50 transition"
+                className="flex items-center justify-between p-4 border dark:border-gray-700 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-800 transition"
               >
                 
                 <div>
-                  <h3 className="font-semibold text-gray-800">
+                  <h3 className="font-semibold text-gray-800 dark:text-white">
                     {user.name}
                   </h3>
 
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     {user.email}
                   </p>
                 </div>
 
-                <div className="bg-pink-100 text-pink-600 p-3 rounded-xl">
+                <div className="bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400 p-3 rounded-xl">
                   <FaEye />
                 </div>
               </div>

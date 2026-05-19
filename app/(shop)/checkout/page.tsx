@@ -44,9 +44,11 @@ export default function CheckoutPage() {
 
       // 🔥 SAFE TEXT
       const text = await res.text();
+
       console.log("RAW:", text);
 
       let data;
+
       try {
         data = JSON.parse(text);
       } catch (err) {
@@ -75,6 +77,7 @@ export default function CheckoutPage() {
       }
     } catch (error) {
       console.error(error);
+
       alert("Something went wrong");
     } finally {
       setLoading(false);
@@ -83,49 +86,114 @@ export default function CheckoutPage() {
 
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-6">
-      <h1 className="text-3xl font-bold text-center">Checkout</h1>
+      <h1 className="text-3xl font-bold text-center text-gray-900 dark:text-white">
+        Checkout
+      </h1>
 
       {/* 🔷 Form */}
       <div className="space-y-4">
         <input
           placeholder="Full Name"
-          className="border p-3 w-full rounded"
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
+          className="
+            border border-gray-300 dark:border-gray-700
+            bg-white dark:bg-gray-900
+            text-gray-900 dark:text-white
+            placeholder:text-gray-400 dark:placeholder:text-gray-500
+            p-3 w-full rounded
+            outline-none
+            focus:ring-2 focus:ring-green-500/30
+          "
+          onChange={(e) =>
+            setForm({
+              ...form,
+              name: e.target.value,
+            })
+          }
         />
 
         <input
           placeholder="Phone Number"
-          className="border p-3 w-full rounded"
-          onChange={(e) => setForm({ ...form, phone: e.target.value })}
+          className="
+            border border-gray-300 dark:border-gray-700
+            bg-white dark:bg-gray-900
+            text-gray-900 dark:text-white
+            placeholder:text-gray-400 dark:placeholder:text-gray-500
+            p-3 w-full rounded
+            outline-none
+            focus:ring-2 focus:ring-green-500/30
+          "
+          onChange={(e) =>
+            setForm({
+              ...form,
+              phone: e.target.value,
+            })
+          }
         />
 
         <textarea
           placeholder="Delivery Address"
-          className="border p-3 w-full rounded"
-          onChange={(e) => setForm({ ...form, address: e.target.value })}
+          className="
+            border border-gray-300 dark:border-gray-700
+            bg-white dark:bg-gray-900
+            text-gray-900 dark:text-white
+            placeholder:text-gray-400 dark:placeholder:text-gray-500
+            p-3 w-full rounded
+            outline-none
+            focus:ring-2 focus:ring-green-500/30
+          "
+          onChange={(e) =>
+            setForm({
+              ...form,
+              address: e.target.value,
+            })
+          }
         />
       </div>
 
       {/* 🔷 Order Summary */}
-      <div className="border rounded-lg p-4 space-y-2 bg-gray-50">
-        <h2 className="font-semibold text-lg">Order Summary</h2>
+      <div
+        className="
+          border border-gray-200 dark:border-gray-700
+          rounded-lg p-4 space-y-2
+          bg-gray-50 dark:bg-gray-900
+        "
+      >
+        <h2 className="font-semibold text-lg text-gray-900 dark:text-white">
+          Order Summary
+        </h2>
 
         {items.map((item, index) => (
-          <div key={`${item._id}-${index}`} className="flex flex-col gap-1 text-sm border-b pb-2 mb-2 last:border-0 last:pb-0 last:mb-0">
-            <div className="flex justify-between">
-              <span>{item.name} × {item.quantity}</span>
-              <span>৳ {item.price * item.quantity}</span>
+          <div
+            key={`${item._id}-${index}`}
+            className="
+              flex flex-col gap-1 text-sm
+              border-b border-gray-200 dark:border-gray-700
+              pb-2 mb-2 last:border-0 last:pb-0 last:mb-0
+            "
+          >
+            <div className="flex justify-between text-gray-900 dark:text-white">
+              <span>
+                {item.name} × {item.quantity}
+              </span>
+
+              <span>
+                ৳ {item.price * item.quantity}
+              </span>
             </div>
+
             {item.size && (
-              <div className="text-xs text-gray-500">Size: {item.size}</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400">
+                Size: {item.size}
+              </div>
             )}
           </div>
         ))}
 
-        <hr />
+        <hr className="border-gray-200 dark:border-gray-700" />
 
-        <div className="flex justify-between font-bold text-lg">
+        <div className="flex justify-between font-bold text-lg text-gray-900 dark:text-white">
           <span>Total</span>
+
           <span>৳ {total}</span>
         </div>
       </div>
@@ -134,9 +202,14 @@ export default function CheckoutPage() {
       <button
         onClick={handlePayment}
         disabled={loading}
-        className={`w-full py-3 rounded text-white font-semibold transition ${
-          loading ? "bg-gray-400" : "bg-green-600 hover:bg-green-700"
-        }`}
+        className={`
+          w-full py-3 rounded text-white font-semibold transition
+          ${
+            loading
+              ? "bg-gray-400 dark:bg-gray-700"
+              : "bg-green-600 hover:bg-green-700"
+          }
+        `}
       >
         {loading ? "Processing..." : "Pay Now"}
       </button>

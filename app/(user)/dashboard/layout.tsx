@@ -36,8 +36,10 @@ export default function DashboardLayout({
   const { data: session } = useSession();
 
   return (
-    <div className={theme.userShell}>
-      <aside className={theme.userSidebar}>
+    <div className={`${theme.userShell} bg-gray-50 dark:bg-gray-950`}>
+      <aside
+        className={`${theme.userSidebar} border-r border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900`}
+      >
         <div className="flex items-center justify-between border-b border-gray-200/80 p-5 dark:border-gray-800">
           <BrandLogo size="sm" href="/dashboard" />
           <ThemeToggle />
@@ -51,10 +53,14 @@ export default function DashboardLayout({
             height={90}
             className="rounded-full border-4 border-sky-200 shadow-lg dark:border-sky-800"
           />
+
           <h2 className={`mt-4 text-lg font-bold ${theme.heading}`}>
             {session?.user?.name}
           </h2>
-          <p className={`text-sm ${theme.subtext}`}>{session?.user?.email}</p>
+
+          <p className={`text-sm ${theme.subtext}`}>
+            {session?.user?.email}
+          </p>
         </div>
 
         <nav className="flex-1 space-y-2 p-4">
@@ -91,7 +97,9 @@ export default function DashboardLayout({
         </div>
       </aside>
 
-      <main className="flex-1 p-4 pb-24 md:p-8">{children}</main>
+      <main className="flex-1 bg-gray-50 p-4 pb-24 dark:bg-gray-950 md:p-8">
+        {children}
+      </main>
 
       <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-950 md:hidden">
         <div className="grid grid-cols-6">
@@ -103,7 +111,7 @@ export default function DashboardLayout({
               <Link
                 key={link.href}
                 href={link.href}
-                className={`flex flex-col items-center justify-center py-3 text-[10px] ${
+                className={`flex flex-col items-center justify-center py-3 text-[10px] transition ${
                   active
                     ? "text-sky-600 dark:text-sky-400"
                     : "text-gray-500 dark:text-gray-400"

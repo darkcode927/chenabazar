@@ -19,86 +19,134 @@ export const dynamic = "force-dynamic";
 
 export default function HomePage() {
   return (
-    <main className={`overflow-hidden ${theme.shopPage}`}>
+    <main
+      className={`overflow-hidden bg-white text-gray-900 transition-colors duration-300 dark:bg-gray-950 dark:text-white ${theme.shopPage}`}
+    >
+      {/* HERO */}
       <HeroSection />
 
-      <div className="relative z-30 -mt-10 px-4">
-        <div className="max-w-6xl mx-auto">
+      {/* FLOATING SEARCH */}
+      <div className="relative z-30 -mt-6 px-4 sm:-mt-8 lg:-mt-10">
+        <div className="mx-auto max-w-6xl">
           <FloatingSearch />
         </div>
       </div>
 
-      <section className="max-w-7xl mx-auto px-4 py-16">
-        <CategorySection />
+      {/* CATEGORY */}
+      <section className="px-4 py-12 sm:py-14 lg:py-16">
+        <div className="mx-auto max-w-7xl">
+          <CategorySection />
+        </div>
       </section>
 
-      <section id="flash" className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-100 via-pink-100 to-orange-100 opacity-60" />
-        <div className="relative max-w-7xl mx-auto px-4">
+      {/* FLASH SALE */}
+      <section
+        id="flash"
+        className="relative overflow-hidden py-14 sm:py-16 lg:py-20"
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-red-100/70 via-pink-100/70 to-orange-100/70 dark:from-red-950/30 dark:via-pink-950/20 dark:to-orange-950/30" />
+
+        <div className="absolute top-0 left-0 h-72 w-72 rounded-full bg-pink-200/30 blur-3xl dark:bg-pink-500/10" />
+
+        <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-orange-200/30 blur-3xl dark:bg-orange-500/10" />
+
+        <div className="relative mx-auto max-w-7xl px-4">
           <FlashSale />
         </div>
       </section>
 
-      <section id="trending" className="max-w-7xl mx-auto px-4 py-20">
-        <TrendingProducts />
+      {/* TRENDING */}
+      <section
+        id="trending"
+        className="px-4 py-14 sm:py-16 lg:py-20"
+      >
+        <div className="mx-auto max-w-7xl">
+          <TrendingProducts />
+        </div>
       </section>
 
-      <section className="px-4 pb-6">
-        <div className="max-w-7xl mx-auto">
+      {/* OFFER BANNER */}
+      <section className="px-4 pb-6 sm:pb-10">
+        <div className="mx-auto max-w-7xl">
           <OfferBanner />
         </div>
       </section>
 
-      <section id="featured" className="relative py-16 overflow-hidden">
-        <div className="absolute top-0 left-0 w-72 h-72 bg-pink-200/30 blur-3xl rounded-full" />
-        <div className="absolute bottom-0 right-0 w-72 h-72 bg-sky-200/30 blur-3xl rounded-full" />
-        <div className="relative max-w-7xl mx-auto px-4">
+      {/* FEATURED PRODUCTS */}
+      <section
+        id="featured"
+        className="relative overflow-hidden py-14 sm:py-16 lg:py-20"
+      >
+        <div className="absolute top-0 left-0 h-72 w-72 rounded-full bg-pink-200/30 blur-3xl dark:bg-pink-500/10" />
+
+        <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-sky-200/30 blur-3xl dark:bg-sky-500/10" />
+
+        <div className="relative mx-auto max-w-7xl px-4">
           <FeaturedProducts />
         </div>
       </section>
 
+      {/* NEW ARRIVALS */}
       <section
         id="new"
-        className="bg-gradient-to-b from-white to-pink-50 py-20 dark:from-gray-900 dark:to-gray-950"
+        className="bg-gradient-to-b from-white to-pink-50 py-14 transition-colors duration-300 dark:from-gray-950 dark:to-gray-900 sm:py-16 lg:py-20"
       >
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <NewArrivals />
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 py-20">
-        <BrandShowcase />
+      {/* BRANDS */}
+      <section className="px-4 py-14 sm:py-16 lg:py-20">
+        <div className="mx-auto max-w-7xl">
+          <BrandShowcase />
+        </div>
       </section>
 
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-sky-100 via-white to-pink-100 opacity-70" />
-        <div className="relative max-w-7xl mx-auto px-4">
+      {/* AI RECOMMENDATION */}
+      <section className="relative overflow-hidden py-14 sm:py-16 lg:py-20">
+        <div className="absolute inset-0 bg-gradient-to-r from-sky-100/70 via-white/80 to-pink-100/70 dark:from-sky-950/20 dark:via-slate-950 dark:to-pink-950/20" />
+
+        <div className="absolute top-0 left-0 h-72 w-72 rounded-full bg-sky-200/20 blur-3xl dark:bg-sky-500/10" />
+
+        <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-pink-200/20 blur-3xl dark:bg-pink-500/10" />
+
+        <div className="relative mx-auto max-w-7xl px-4">
           <AIRecommendation />
         </div>
       </section>
 
-      <section className="border-y border-gray-200 bg-white py-20 dark:border-gray-800 dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4">
+      {/* BENEFITS */}
+      <section className="border-y border-gray-200 bg-white py-14 transition-colors duration-300 dark:border-gray-800 dark:bg-gray-900 sm:py-16 lg:py-20">
+        <div className="mx-auto max-w-7xl px-4">
           <BenefitsSection />
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 py-20">
-        <Testimonials />
+      {/* TESTIMONIALS */}
+      <section className="px-4 py-14 sm:py-16 lg:py-20">
+        <div className="mx-auto max-w-7xl">
+          <Testimonials />
+        </div>
       </section>
 
-      <section className="bg-gradient-to-b from-pink-50 to-white py-20">
-        <div className="max-w-7xl mx-auto px-4">
+      {/* INSTAGRAM */}
+      <section className="bg-gradient-to-b from-pink-50 to-white py-14 transition-colors duration-300 dark:from-gray-900 dark:to-gray-950 sm:py-16 lg:py-20">
+        <div className="mx-auto max-w-7xl px-4">
           <InstagramFeed />
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 py-20">
-        <MobileAppSection />
+      {/* MOBILE APP */}
+      <section className="px-4 py-14 sm:py-16 lg:py-20">
+        <div className="mx-auto max-w-7xl">
+          <MobileAppSection />
+        </div>
       </section>
 
-      <section className="pb-24 px-4">
-        <div className="max-w-5xl mx-auto">
+      {/* NEWSLETTER */}
+      <section className="px-4 pb-16 sm:pb-20 lg:pb-24">
+        <div className="mx-auto max-w-5xl">
           <Newsletter />
         </div>
       </section>

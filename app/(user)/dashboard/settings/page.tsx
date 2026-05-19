@@ -2,14 +2,14 @@ export default function SettingsPage() {
   return (
     <div className="space-y-6">
 
-      <h1 className="text-4xl font-black text-gray-800">
+      <h1 className="text-4xl font-black text-gray-800 dark:text-white">
         Settings
       </h1>
 
-      <div className="bg-white rounded-3xl shadow-xl p-8 space-y-5">
+      <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-xl p-8 space-y-5">
 
         <div className="flex items-center justify-between">
-          <p className="font-semibold">
+          <p className="font-semibold text-gray-800 dark:text-gray-100">
             Dark Mode
           </p>
 
@@ -19,7 +19,7 @@ export default function SettingsPage() {
         </div>
 
         <div className="flex items-center justify-between">
-          <p className="font-semibold">
+          <p className="font-semibold text-gray-800 dark:text-gray-100">
             Email Notifications
           </p>
 

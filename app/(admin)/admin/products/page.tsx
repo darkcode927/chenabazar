@@ -64,7 +64,7 @@ export default async function AdminProductsPage() {
             
             <Link
               href="/admin/products/create"
-              className="group bg-white text-gray-900 px-7 py-4 rounded-2xl font-bold shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3"
+              className="group bg-white dark:bg-gray-900 text-gray-900 dark:text-white px-7 py-4 rounded-2xl font-bold shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3"
             >
               <FaPlus className="group-hover:rotate-90 transition duration-300" />
               Add Product
@@ -85,18 +85,18 @@ export default async function AdminProductsPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
         
         {/* Total Products */}
-        <div className="group relative overflow-hidden bg-white rounded-[2rem] border border-gray-100 p-7 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+        <div className="group relative overflow-hidden bg-white dark:bg-gray-900 rounded-[2rem] border border-gray-100 dark:border-gray-700 p-7 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
           
-          <div className="absolute top-0 right-0 w-32 h-32 bg-pink-100 rounded-full blur-3xl opacity-60" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-pink-100 dark:bg-pink-900/20 rounded-full blur-3xl opacity-60" />
 
           <div className="relative z-10 flex items-start justify-between">
             
             <div>
-              <p className="text-gray-500 font-medium">
+              <p className="text-gray-500 dark:text-gray-400 font-medium">
                 Total Products
               </p>
 
-              <h2 className="text-4xl font-black mt-3 text-gray-800">
+              <h2 className="text-4xl font-black mt-3 text-gray-800 dark:text-white">
                 {products.length}
               </h2>
             </div>
@@ -108,18 +108,18 @@ export default async function AdminProductsPage() {
         </div>
 
         {/* Categories */}
-        <div className="group relative overflow-hidden bg-white rounded-[2rem] border border-gray-100 p-7 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+        <div className="group relative overflow-hidden bg-white dark:bg-gray-900 rounded-[2rem] border border-gray-100 dark:border-gray-700 p-7 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
           
-          <div className="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-full blur-3xl opacity-60" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-3xl opacity-60" />
 
           <div className="relative z-10 flex items-start justify-between">
             
             <div>
-              <p className="text-gray-500 font-medium">
+              <p className="text-gray-500 dark:text-gray-400 font-medium">
                 Categories
               </p>
 
-              <h2 className="text-4xl font-black mt-3 text-gray-800">
+              <h2 className="text-4xl font-black mt-3 text-gray-800 dark:text-white">
                 {totalCategories}
               </h2>
             </div>
@@ -131,18 +131,18 @@ export default async function AdminProductsPage() {
         </div>
 
         {/* Latest */}
-        <div className="group relative overflow-hidden bg-white rounded-[2rem] border border-gray-100 p-7 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+        <div className="group relative overflow-hidden bg-white dark:bg-gray-900 rounded-[2rem] border border-gray-100 dark:border-gray-700 p-7 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
           
-          <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-100 rounded-full blur-3xl opacity-60" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-100 dark:bg-yellow-900/20 rounded-full blur-3xl opacity-60" />
 
           <div className="relative z-10 flex items-start justify-between">
             
             <div className="min-w-0">
-              <p className="text-gray-500 font-medium">
+              <p className="text-gray-500 dark:text-gray-400 font-medium">
                 Latest Product
               </p>
 
-              <h2 className="text-xl font-black mt-3 text-gray-800 truncate">
+              <h2 className="text-xl font-black mt-3 text-gray-800 dark:text-white truncate">
                 {products[0]?.name || "No Product"}
               </h2>
             </div>
@@ -154,18 +154,18 @@ export default async function AdminProductsPage() {
         </div>
 
         {/* Active Store */}
-        <div className="group relative overflow-hidden bg-white rounded-[2rem] border border-gray-100 p-7 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+        <div className="group relative overflow-hidden bg-white dark:bg-gray-900 rounded-[2rem] border border-gray-100 dark:border-gray-700 p-7 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
           
-          <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-100 rounded-full blur-3xl opacity-60" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-100 dark:bg-emerald-900/20 rounded-full blur-3xl opacity-60" />
 
           <div className="relative z-10 flex items-start justify-between">
             
             <div>
-              <p className="text-gray-500 font-medium">
+              <p className="text-gray-500 dark:text-gray-400 font-medium">
                 Store Status
               </p>
 
-              <h2 className="text-2xl font-black mt-3 text-emerald-600">
+              <h2 className="text-2xl font-black mt-3 text-emerald-600 dark:text-emerald-400">
                 Active
               </h2>
             </div>
@@ -179,17 +179,17 @@ export default async function AdminProductsPage() {
 
       {/* 🔥 PRODUCTS */}
       {products.length === 0 ? (
-        <div className="bg-white rounded-[2rem] border border-dashed border-gray-300 p-20 text-center shadow-sm">
+        <div className="bg-white dark:bg-gray-900 rounded-[2rem] border border-dashed border-gray-300 dark:border-gray-700 p-20 text-center shadow-sm">
           
-          <div className="w-24 h-24 rounded-full bg-pink-100 flex items-center justify-center mx-auto">
+          <div className="w-24 h-24 rounded-full bg-pink-100 dark:bg-pink-900/20 flex items-center justify-center mx-auto">
             <FaBoxOpen className="text-4xl text-pink-500" />
           </div>
 
-          <h2 className="text-3xl font-black text-gray-800 mt-6">
+          <h2 className="text-3xl font-black text-gray-800 dark:text-white mt-6">
             No Products Found
           </h2>
 
-          <p className="text-gray-500 mt-3 text-lg">
+          <p className="text-gray-500 dark:text-gray-400 mt-3 text-lg">
             Start building your professional online store.
           </p>
 
@@ -207,7 +207,7 @@ export default async function AdminProductsPage() {
           {products.map((product: any) => (
             <div
               key={product._id}
-              className="group bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
+              className="group bg-white dark:bg-gray-900 rounded-[2rem] overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
             >
               
               {/* 🔥 IMAGE */}
@@ -233,7 +233,7 @@ export default async function AdminProductsPage() {
                   
                   <Link
                     href={`/admin/products/edit/${product._id}`}
-                    className="w-11 h-11 rounded-2xl bg-white text-blue-600 flex items-center justify-center shadow-xl hover:scale-110 transition"
+                    className="w-11 h-11 rounded-2xl bg-white dark:bg-gray-900 text-blue-600 dark:text-blue-400 flex items-center justify-center shadow-xl hover:scale-110 transition"
                   >
                     <FaEdit />
                   </Link>
@@ -249,11 +249,11 @@ export default async function AdminProductsPage() {
               <div className="p-6 space-y-4">
                 
                 <div>
-                  <h2 className="text-xl font-black text-gray-800 line-clamp-1">
+                  <h2 className="text-xl font-black text-gray-800 dark:text-white line-clamp-1">
                     {product.name}
                   </h2>
 
-                  <p className="text-gray-500 text-sm mt-1 capitalize">
+                  <p className="text-gray-500 dark:text-gray-400 text-sm mt-1 capitalize">
                     Premium {product.category} collection
                   </p>
                 </div>
@@ -262,16 +262,16 @@ export default async function AdminProductsPage() {
                 <div className="flex items-center justify-between">
                   
                   <div>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm text-gray-400 dark:text-gray-500">
                       Product Price
                     </p>
 
-                    <h3 className="text-3xl font-black text-pink-600 mt-1">
+                    <h3 className="text-3xl font-black text-pink-600 dark:text-pink-400 mt-1">
                       ৳ {product.price}
                     </h3>
                   </div>
 
-                  <div className="bg-pink-50 text-pink-600 px-3 py-2 rounded-2xl text-sm font-bold">
+                  <div className="bg-pink-50 dark:bg-pink-900/20 text-pink-600 dark:text-pink-400 px-3 py-2 rounded-2xl text-sm font-bold">
                     In Stock
                   </div>
                 </div>

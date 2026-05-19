@@ -135,9 +135,9 @@ export default function EditProductPage({
 
   return (
     <div className="max-w-3xl mx-auto">
-      <div className="bg-white rounded-3xl border shadow-sm p-8 space-y-6">
+      <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-sm p-8 space-y-6">
         
-        <h1 className="text-3xl font-black">
+        <h1 className="text-3xl font-black text-gray-900 dark:text-white">
           Edit Product
         </h1>
 
@@ -150,7 +150,7 @@ export default function EditProductPage({
             })
           }
           placeholder="Product Name"
-          className="w-full border rounded-2xl p-4"
+          className="w-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-2xl p-4 outline-none"
         />
 
         <input
@@ -162,7 +162,7 @@ export default function EditProductPage({
             })
           }
           placeholder="Price"
-          className="w-full border rounded-2xl p-4"
+          className="w-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-2xl p-4 outline-none"
         />
 
         <input
@@ -175,7 +175,7 @@ export default function EditProductPage({
             })
           }
           placeholder="Category"
-          className="w-full border rounded-2xl p-4"
+          className="w-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-2xl p-4 outline-none"
         />
 
         <input
@@ -183,13 +183,13 @@ export default function EditProductPage({
           onChange={
             handleImageUpload
           }
-          className="w-full border rounded-2xl p-4"
+          className="w-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-2xl p-4"
         />
 
         {form.image && (
           <img
             src={form.image}
-            className="w-40 h-40 rounded-2xl object-cover"
+            className="w-40 h-40 rounded-2xl object-cover border border-gray-200 dark:border-gray-700"
           />
         )}
 

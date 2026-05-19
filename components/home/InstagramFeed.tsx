@@ -58,19 +58,19 @@ const posts = [
 
 export default function InstagramFeed() {
   return (
-    <section className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-pink-50 via-white to-orange-50 border border-pink-100 shadow-[0_20px_80px_rgba(236,72,153,0.12)] px-5 md:px-10 py-16">
+    <section className="relative overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] border border-pink-100/60 dark:border-gray-800 bg-gradient-to-br from-pink-50 via-white to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 shadow-[0_20px_80px_rgba(236,72,153,0.10)] dark:shadow-[0_20px_80px_rgba(0,0,0,0.45)] px-4 sm:px-6 md:px-10 py-12 sm:py-16 transition-colors duration-300">
 
       {/* 🔥 Background Glow */}
-      <div className="absolute top-0 left-0 h-72 w-72 bg-pink-200/40 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-0 h-60 w-60 sm:h-72 sm:w-72 bg-pink-200/30 dark:bg-pink-500/10 rounded-full blur-3xl" />
 
-      <div className="absolute bottom-0 right-0 h-72 w-72 bg-orange-200/40 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 h-60 w-60 sm:h-72 sm:w-72 bg-orange-200/30 dark:bg-orange-500/10 rounded-full blur-3xl" />
 
       <div className="relative z-10">
 
         {/* 🔥 Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12 sm:mb-14">
 
-          <div>
+          <div className="max-w-3xl">
 
             {/* Badge */}
             <motion.div
@@ -85,7 +85,8 @@ export default function InstagramFeed() {
               transition={{
                 duration: 0.4,
               }}
-              className="inline-flex items-center gap-2 bg-pink-100 text-pink-600 px-5 py-2 rounded-full text-sm font-bold shadow-sm"
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 bg-pink-100 dark:bg-pink-500/10 text-pink-600 dark:text-pink-400 px-5 py-2 rounded-full text-xs sm:text-sm font-bold shadow-sm border border-pink-200/60 dark:border-pink-500/20"
             >
               <FaInstagram />
               Social Showcase
@@ -104,7 +105,8 @@ export default function InstagramFeed() {
               transition={{
                 duration: 0.5,
               }}
-              className="mt-6 text-4xl md:text-5xl font-black text-gray-900 leading-tight"
+              viewport={{ once: true }}
+              className="mt-5 sm:mt-6 text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 dark:text-white leading-tight"
             >
               Shop The Look
               <span className="block bg-gradient-to-r from-pink-500 via-red-500 to-orange-500 bg-clip-text text-transparent">
@@ -125,7 +127,8 @@ export default function InstagramFeed() {
               transition={{
                 duration: 0.7,
               }}
-              className="mt-5 text-lg text-gray-500 max-w-2xl leading-relaxed"
+              viewport={{ once: true }}
+              className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed"
             >
               Discover trending styles, customer looks,
               and fashion inspiration shared by our
@@ -144,15 +147,16 @@ export default function InstagramFeed() {
               scale: 1,
             }}
             whileHover={{
-              scale: 1.05,
+              scale: 1.03,
             }}
             transition={{
               duration: 0.5,
             }}
+            viewport={{ once: true }}
             href="#"
-            className="group inline-flex items-center gap-3 bg-gradient-to-r from-pink-500 via-red-500 to-orange-500 hover:shadow-[0_20px_60px_rgba(236,72,153,0.35)] transition-all duration-300 text-white px-8 py-4 rounded-2xl font-black shadow-xl w-fit"
+            className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-pink-500 via-red-500 to-orange-500 hover:shadow-[0_20px_60px_rgba(236,72,153,0.35)] transition-all duration-300 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl font-black shadow-xl w-full sm:w-fit"
           >
-            <FaInstagram className="text-xl" />
+            <FaInstagram className="text-lg sm:text-xl" />
 
             Follow Us
 
@@ -161,7 +165,7 @@ export default function InstagramFeed() {
         </div>
 
         {/* 🔥 Instagram Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
 
           {posts.map((post, index) => (
             <motion.div
@@ -178,10 +182,11 @@ export default function InstagramFeed() {
                 duration: 0.5,
                 delay: index * 0.05,
               }}
+              viewport={{ once: true }}
               whileHover={{
                 y: -8,
               }}
-              className="group relative overflow-hidden rounded-[2rem] shadow-xl border border-white/30 bg-white"
+              className="group relative overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] shadow-xl border border-white/40 dark:border-gray-800 bg-white dark:bg-gray-900 transition-all duration-300"
             >
 
               {/* 🔥 Image */}
@@ -195,28 +200,28 @@ export default function InstagramFeed() {
                 />
 
                 {/* 🔥 Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-5">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-3 sm:p-5">
 
                   <div className="flex items-center justify-between text-white">
 
-                    <div className="flex items-center gap-2 text-sm font-semibold">
+                    <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm font-semibold">
                       <FaHeart className="text-pink-400" />
                       {post.likes}
                     </div>
 
-                    <div className="flex items-center gap-2 text-sm font-semibold">
+                    <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm font-semibold">
                       <FaCommentDots className="text-sky-400" />
                       {post.comments}
                     </div>
                   </div>
 
-                  <button className="mt-4 bg-white text-black hover:bg-pink-500 hover:text-white transition-all duration-300 rounded-xl py-3 font-bold text-sm">
+                  <button className="mt-3 sm:mt-4 bg-white text-black hover:bg-pink-500 hover:text-white transition-all duration-300 rounded-xl py-2.5 sm:py-3 font-bold text-xs sm:text-sm">
                     View Post
                   </button>
                 </div>
 
                 {/* 🔥 Instagram Icon */}
-                <div className="absolute top-4 right-4 h-11 w-11 rounded-2xl bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-lg shadow-lg">
+                <div className="absolute top-3 right-3 sm:top-4 sm:right-4 h-9 w-9 sm:h-11 sm:w-11 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-sm sm:text-lg shadow-lg">
                   <FaInstagram />
                 </div>
               </div>
@@ -237,23 +242,24 @@ export default function InstagramFeed() {
           transition={{
             duration: 0.6,
           }}
-          className="mt-14 text-center"
+          viewport={{ once: true }}
+          className="mt-12 sm:mt-14 text-center"
         >
 
-          <h3 className="text-2xl md:text-3xl font-black text-gray-900">
+          <h3 className="text-2xl sm:text-3xl font-black text-gray-900 dark:text-white">
             Join Our Fashion Community
           </h3>
 
-          <p className="mt-4 text-gray-500 text-lg max-w-2xl mx-auto">
+          <p className="mt-4 text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
             Tag your photos with
-            <span className="font-bold text-pink-600">
+            <span className="font-bold text-pink-600 dark:text-pink-400">
               {" "}
               #ChenaBazar
             </span>{" "}
             to get featured on our homepage.
           </p>
 
-          <button className="mt-8 bg-black hover:bg-gradient-to-r hover:from-pink-500 hover:to-red-500 transition-all duration-300 text-white px-8 py-4 rounded-2xl font-black shadow-xl">
+          <button className="mt-7 sm:mt-8 bg-black dark:bg-white hover:bg-gradient-to-r hover:from-pink-500 hover:to-red-500 dark:hover:from-pink-500 dark:hover:to-red-500 text-white dark:text-black hover:text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-2xl font-black shadow-xl transition-all duration-300 hover:scale-[1.03]">
             Explore More Looks
           </button>
         </motion.div>

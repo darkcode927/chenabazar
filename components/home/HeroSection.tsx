@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const slides = [
   {
@@ -70,18 +71,33 @@ const slides = [
 
 export default function HeroSection() {
   const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
+    if (paused) return;
+
     const interval = setInterval(() => {
       setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [paused]);
+
+  const prevSlide = () => {
+    setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  };
 
   return (
-    <section className="relative w-full h-[75vh] overflow-hidden  shadow-2xl">
-      {/* 🔥 Slides */}
+    <section
+      className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] overflow-hidden shadow-2xl"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Slides */}
       {slides.map((slide, index) => (
         <div
           key={slide.id}
@@ -91,67 +107,78 @@ export default function HeroSection() {
               : "opacity-0 scale-105 z-0"
           }`}
         >
-          {/* Background Image */}
           <Image
             src={slide.image}
             alt={slide.title}
             fill
-            priority
+            priority={index === 0}
             className="object-cover"
           />
 
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-black/55" />
+          {/* 🔥 Gradient Overlay (better look) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
 
-          {/* Content */}
           <div className="relative z-20 h-full flex items-center">
             <div className="max-w-7xl mx-auto px-6 w-full">
               <div className="max-w-2xl text-white">
-                {/* Category */}
-                <span className="inline-block bg-pink-500/90 backdrop-blur-md px-5 py-2 rounded-full text-sm font-semibold mb-6 shadow-lg">
+
+                <span className="inline-block bg-pink-500 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold mb-4 shadow-lg">
                   {slide.category}
                 </span>
 
-                {/* Heading */}
-                <h1 className="text-4xl md:text-6xl font-black leading-tight tracking-tight drop-shadow-lg">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl font-black leading-tight">
                   {slide.title}
                 </h1>
 
-                {/* Subtitle */}
-                <p className="mt-6 text-lg md:text-xl text-gray-200 leading-relaxed">
+                <p className="mt-4 text-sm sm:text-lg text-gray-200">
                   {slide.subtitle}
                 </p>
 
-                {/* Buttons */}
-                <div className="flex flex-wrap gap-4 mt-8">
+                <div className="flex flex-wrap gap-3 mt-6">
                   <Link
                     href={slide.link}
-                    className="bg-gradient-to-r from-pink-500 to-red-500 hover:scale-105 transition-all duration-300 text-white px-8 py-4 rounded-2xl font-bold shadow-2xl"
+                    className="bg-gradient-to-r from-pink-500 to-red-500 hover:scale-105 transition text-white px-6 py-3 rounded-xl font-bold shadow-xl"
                   >
                     {slide.button}
                   </Link>
 
                   <Link
                     href="/categories"
-                    className="bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 transition-all duration-300 px-8 py-4 rounded-2xl font-semibold"
+                    className="bg-white/10 backdrop-blur border border-white/30 hover:bg-white/20 transition px-6 py-3 rounded-xl font-semibold"
                   >
-                    Browse Categories
+                    Browse
                   </Link>
                 </div>
+
               </div>
             </div>
           </div>
         </div>
       ))}
 
-      {/* 🔥 Slider Dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3">
+      {/* 🔥 ARROWS */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/40 p-3 rounded-full backdrop-blur transition"
+      >
+        <FaChevronLeft className="text-white" />
+      </button>
+
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/40 p-3 rounded-full backdrop-blur transition"
+      >
+        <FaChevronRight className="text-white" />
+      </button>
+
+      {/* DOTS */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-2">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrent(index)}
-            className={`h-3 rounded-full transition-all duration-300 ${
-              current === index ? "w-10 bg-white" : "w-3 bg-white/50"
+            className={`h-2 rounded-full transition-all ${
+              current === index ? "w-8 bg-white" : "w-2 bg-white/50"
             }`}
           />
         ))}

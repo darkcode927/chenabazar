@@ -32,11 +32,11 @@ export default async function UsersPage() {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         
         <div>
-          <h1 className="text-4xl font-black text-gray-800">
+          <h1 className="text-4xl font-black text-gray-800 dark:text-white">
             User Management
           </h1>
 
-          <p className="text-gray-500 mt-2">
+          <p className="text-gray-500 dark:text-gray-400 mt-2">
             Manage customers, admins & user activities
           </p>
         </div>
@@ -111,22 +111,22 @@ export default async function UsersPage() {
       </div>
 
       {/* 🔥 Users Table */}
-      <div className="bg-white rounded-3xl border shadow-sm overflow-hidden">
+      <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
         
         {/* Table Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b bg-gray-50">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
           
           <div>
-            <h2 className="text-xl font-black text-gray-800">
+            <h2 className="text-xl font-black text-gray-800 dark:text-white">
               All Users
             </h2>
 
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
               Recent registered users
             </p>
           </div>
 
-          <div className="text-sm text-gray-400">
+          <div className="text-sm text-gray-400 dark:text-gray-500">
             {users.length} users found
           </div>
         </div>
@@ -135,7 +135,7 @@ export default async function UsersPage() {
         <div className="hidden lg:block overflow-x-auto">
           
           <table className="w-full">
-            <thead className="bg-gray-100 text-gray-600 text-sm">
+            <thead className="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-sm">
               <tr>
                 <th className="px-6 py-4 text-left">
                   User
@@ -159,7 +159,7 @@ export default async function UsersPage() {
               {users.map((user: any) => (
                 <tr
                   key={user._id}
-                  className="border-t hover:bg-pink-50/40 transition-all duration-200"
+                  className="border-t border-gray-200 dark:border-gray-700 hover:bg-pink-50/40 dark:hover:bg-gray-800 transition-all duration-200"
                 >
                   
                   {/* User */}
@@ -172,7 +172,7 @@ export default async function UsersPage() {
                           alt={user.name}
                           width={50}
                           height={50}
-                          className="rounded-full object-cover border"
+                          className="rounded-full object-cover border border-gray-200 dark:border-gray-700"
                         />
                       ) : (
                         <div className="w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-red-500 text-white flex items-center justify-center font-bold text-lg">
@@ -181,11 +181,11 @@ export default async function UsersPage() {
                       )}
 
                       <div>
-                        <h3 className="font-bold text-gray-800">
+                        <h3 className="font-bold text-gray-800 dark:text-white">
                           {user.name || "Unknown"}
                         </h3>
 
-                        <p className="text-xs text-gray-400 mt-1">
+                        <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
                           ID: {user._id.toString().slice(-6)}
                         </p>
                       </div>
@@ -194,7 +194,7 @@ export default async function UsersPage() {
 
                   {/* Email */}
                   <td className="px-6 py-5">
-                    <div className="flex items-center gap-2 text-gray-600">
+                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
                       <FaEnvelope className="text-pink-500" />
 
                       <span>{user.email}</span>
@@ -204,12 +204,12 @@ export default async function UsersPage() {
                   {/* Role */}
                   <td className="px-6 py-5">
                     {user.role === "admin" ? (
-                      <span className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold">
+                      <span className="inline-flex items-center gap-2 bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 px-4 py-2 rounded-full text-sm font-semibold">
                         <FaUserShield />
                         Admin
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-2 bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-semibold">
+                      <span className="inline-flex items-center gap-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-full text-sm font-semibold">
                         <FaUserCheck />
                         Customer
                       </span>
@@ -218,7 +218,7 @@ export default async function UsersPage() {
 
                   {/* Joined */}
                   <td className="px-6 py-5">
-                    <div className="flex items-center gap-2 text-gray-500">
+                    <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
                       <FaCalendarAlt />
 
                       <span>
@@ -240,7 +240,7 @@ export default async function UsersPage() {
           {users.map((user: any) => (
             <div
               key={user._id}
-              className="border rounded-2xl p-5 hover:shadow-lg transition"
+              className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 rounded-2xl p-5 hover:shadow-lg transition"
             >
               
               <div className="flex items-center gap-4">
@@ -260,11 +260,11 @@ export default async function UsersPage() {
                 )}
 
                 <div>
-                  <h2 className="font-bold text-gray-800">
+                  <h2 className="font-bold text-gray-800 dark:text-white">
                     {user.name}
                   </h2>
 
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     {user.email}
                   </p>
                 </div>
@@ -273,16 +273,16 @@ export default async function UsersPage() {
               <div className="flex items-center justify-between mt-5">
                 
                 {user.role === "admin" ? (
-                  <span className="bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold">
+                  <span className="bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 px-4 py-2 rounded-full text-sm font-semibold">
                     Admin
                   </span>
                 ) : (
-                  <span className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-semibold">
+                  <span className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-full text-sm font-semibold">
                     Customer
                   </span>
                 )}
 
-                <span className="text-sm text-gray-400">
+                <span className="text-sm text-gray-400 dark:text-gray-500">
                   {new Date(
                     user.createdAt
                   ).toLocaleDateString()}
