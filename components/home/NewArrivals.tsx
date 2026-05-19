@@ -4,22 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaArrowRight, FaBolt } from "react-icons/fa";
-import { useEffect, useState } from "react";
-import { Product } from "@/types";
 import { useCartStore } from "@/store/cartStore";
+import { useProducts } from "@/hooks/useProducts";
 
-export default function NewArrivals({product} : {product: Product[]}) {
-  const [products, setProducts] = useState<Product[]>([]);
+export default function NewArrivals() {
+  const { products, loading } = useProducts({ limit: 8 });
   const addToCart = useCartStore((s) => s.addToCart);
-
-  useEffect(() => {
-    fetch("/api/products")
-      .then((res) => res.json())
-      .then((data) => {
-        // 🔥 only latest 8 products
-        setProducts(data.slice(0, 8));
-      });
-  }, []);
 
   return (
     <section className="relative overflow-hidden py-20">
@@ -57,6 +47,16 @@ export default function NewArrivals({product} : {product: Product[]}) {
         </div>
 
         {/* Product Grid */}
+        {loading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <motion.div
+                key={i}
+                className="h-96 rounded-[32px] bg-white/60 animate-pulse border"
+              />
+            ))}
+          </div>
+        ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
           {products.map((product, index) => (
             <motion.div
@@ -134,6 +134,7 @@ export default function NewArrivals({product} : {product: Product[]}) {
             </motion.div>
           ))}
         </div>
+        )}
       </div>
     </section>
   );

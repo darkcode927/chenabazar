@@ -11,66 +11,18 @@ import {
   FaFire,
   FaEye,
 } from "react-icons/fa";
-import { Product } from "@/types";
 import { useCartStore } from "@/store/cartStore";
 import { useState } from "react";
+import { useProducts } from "@/hooks/useProducts";
+import { Product } from "@/types";
 
-const trendingProducts = [
-  {
-    id: 1,
-    name: "Premium Wireless Headphone",
-    category: "Electronics",
-    price: 5990,
-    oldPrice: 7490,
-    rating: 4.9,
-    sold: "1.2k+ Sold",
-    image:
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: 2,
-    name: "Luxury Smart Watch",
-    category: "Accessories",
-    price: 8990,
-    oldPrice: 10990,
-    rating: 4.8,
-    sold: "900+ Sold",
-    image:
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: 3,
-    name: "Gaming Mechanical Keyboard",
-    category: "Gaming",
-    price: 4590,
-    oldPrice: 5990,
-    rating: 4.9,
-    sold: "2k+ Sold",
-    image:
-      "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: 4,
-    name: "Minimal Fashion Backpack",
-    category: "Fashion",
-    price: 3490,
-    oldPrice: 4990,
-    rating: 4.7,
-    sold: "650+ Sold",
-    image:
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop",
-  },
-];
-interface TrendingProductsProps {
-  product: Product[];
-}
-
-export default function TrendingProducts({ product }: TrendingProductsProps) {
+export default function TrendingProducts() {
+  const { products: product, loading } = useProducts({ limit: 4 });
   const addToCart = useCartStore((state) => state.addToCart);
   const [added, setAdded] = useState(false);
 
-  const handleAddToCart = () => {
-    addToCart(product);
+  const handleAddToCart = (item: Product) => {
+    addToCart(item);
     setAdded(true);
 
     // Reset after 1.5s
@@ -127,7 +79,17 @@ export default function TrendingProducts({ product }: TrendingProductsProps) {
 
         {/* Product Grid */}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
+        {loading ? (
+          <motion.div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <motion.div
+                key={i}
+                className="h-[420px] rounded-[32px] bg-white/60 animate-pulse border"
+              />
+            ))}
+          </motion.div>
+        ) : (
+        <motion.div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
           {product.map((product, index) => (
             <motion.div
               key={product._id}
@@ -150,7 +112,7 @@ export default function TrendingProducts({ product }: TrendingProductsProps) {
               <Link href={`/products/${product._id}`}>
                 <div className="relative h-72 overflow-hidden">
                   <Image
-                    src={product.image}
+                    src={product.image || "/placeholder.png"}
                     alt={product.name}
                     fill
                     className="object-cover group-hover:scale-110 transition duration-700"
@@ -213,7 +175,7 @@ export default function TrendingProducts({ product }: TrendingProductsProps) {
                 {/* Buttons */}
                 <div className="mt-6 flex gap-3">
                   <button
-                    onClick={handleAddToCart}
+                    onClick={() => handleAddToCart(product)}
                     className="flex-1 h-12 rounded-2xl bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold shadow-lg hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <FaShoppingCart />
@@ -234,7 +196,8 @@ export default function TrendingProducts({ product }: TrendingProductsProps) {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
+        )}
       </div>
     </section>
   );

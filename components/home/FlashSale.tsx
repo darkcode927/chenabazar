@@ -6,16 +6,15 @@ import { motion } from "framer-motion";
 
 import ProductCard from "@/components/product/ProductCard";
 
-import { Product } from "@/types";
-
 import { FaBolt, FaClock, FaFire, FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
+import { useProducts } from "@/hooks/useProducts";
 
-interface FlashSaleProps {
-  product: Product[];
-}
-
-export default function FlashSale({ product }: FlashSaleProps) {
+export default function FlashSale() {
+  const { products: allProducts, loading } = useProducts();
+  const flashItems = allProducts.filter((p) => p.flashSale).slice(0, 4);
+  const product =
+    flashItems.length > 0 ? flashItems : allProducts.slice(0, 4);
   // 🔥 Countdown Timer
   const [timeLeft, setTimeLeft] = useState({
     hours: 12,
@@ -240,7 +239,20 @@ export default function FlashSale({ product }: FlashSaleProps) {
         </motion.div>
 
         {/* 🔥 Products */}
-        {product.length === 0 ? (
+        {loading ? (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8"
+          >
+            {Array.from({ length: 4 }).map((_, i) => (
+              <motion.div
+                key={i}
+                className="h-96 rounded-3xl bg-white/60 animate-pulse border border-red-100"
+              />
+            ))}
+          </motion.div>
+        ) : product.length === 0 ? (
           <div className="bg-white rounded-[2rem] p-16 text-center shadow-xl border border-red-100">
             <div className="mx-auto h-24 w-24 rounded-full bg-red-100 flex items-center justify-center text-red-500 text-4xl">
               <FaFire />

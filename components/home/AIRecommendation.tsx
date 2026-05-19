@@ -18,16 +18,11 @@ import { Autoplay } from "swiper/modules";
 
 import "swiper/css";
 
-import { Product } from "@/types";
 import { useCartStore } from "@/store/cartStore";
+import { useProducts } from "@/hooks/useProducts";
 
-type AIRecommendationProps = {
-  product: Product[];
-};
-
-export default function AIRecommendation({
-  product,
-}: AIRecommendationProps) {
+export default function AIRecommendation() {
+  const { products: product, loading } = useProducts({ limit: 4 });
   const addToCart = useCartStore((s) => s.addToCart);
 
   return (
@@ -89,12 +84,22 @@ export default function AIRecommendation({
         {/* RIGHT SIDE SLIDER */}
         <div className="w-full lg:max-w-2xl">
 
+          {loading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {Array.from({ length: 2 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="h-72 rounded-[2rem] bg-white/10 animate-pulse"
+                />
+              ))}
+            </div>
+          ) : (
           <Swiper
             modules={[Autoplay]}
             spaceBetween={24}
             slidesPerView={1.2}
-            loop
-            autoplay={{ delay: 2500 }}
+            loop={product.length > 1}
+            autoplay={{ delay: 2500, disableOnInteraction: false }}
             breakpoints={{
               640: { slidesPerView: 2 },
               1024: { slidesPerView: 2.2 },
@@ -112,7 +117,7 @@ export default function AIRecommendation({
                   <div className="relative h-72">
 
                     <Image
-                      src={product.image}
+                      src={product.image || "/placeholder.png"}
                       alt={product.name}
                       fill
                       className="object-cover group-hover:scale-110 transition duration-700"
@@ -180,6 +185,7 @@ export default function AIRecommendation({
               </SwiperSlide>
             ))}
           </Swiper>
+          )}
         </div>
       </div>
 

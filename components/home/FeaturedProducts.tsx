@@ -4,22 +4,18 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 import ProductCard from "@/components/product/ProductCard";
-import { Product } from "@/types";
 
 import {
   FaArrowRight,
   FaFire,
 } from "react-icons/fa";
+import { useProducts } from "@/hooks/useProducts";
 
-interface FeaturedProductsProps {
-  product: Product[];
-}
-
-export default function FeaturedProducts({
-  product,
-}: FeaturedProductsProps) {
-
-  // 🔥 Duplicate for infinite slider
+export default function FeaturedProducts() {
+  const { products: allProducts, loading } = useProducts();
+  const featured = allProducts.filter((p) => p.featured).slice(0, 4);
+  const product =
+    featured.length > 0 ? featured : allProducts.slice(0, 4);
   const sliderProducts = [...product, ...product];
 
   return (
@@ -66,7 +62,19 @@ export default function FeaturedProducts({
         </div>
 
         {/* 🔥 Empty State */}
-        {product.length === 0 ? (
+        {loading ? (
+          <motion.div
+            animate={{ opacity: 1 }}
+            className="flex gap-6 overflow-hidden"
+          >
+            {Array.from({ length: 4 }).map((_, i) => (
+              <div
+                key={i}
+                className="min-w-[280px] h-96 rounded-3xl bg-white/60 animate-pulse border"
+              />
+            ))}
+          </motion.div>
+        ) : product.length === 0 ? (
           <div className="bg-white rounded-3xl border p-16 text-center shadow-xl">
 
             <div className="text-6xl">
