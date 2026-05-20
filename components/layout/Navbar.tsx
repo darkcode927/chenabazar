@@ -53,7 +53,7 @@ export default function Navbar() {
       <nav className="sticky top-0 z-50 border-b border-white/10 bg-white/70 backdrop-blur-xl shadow-md dark:bg-gray-950/70">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
 
-          {/* ✅ FIXED SINGLE LOGO */}
+          {/* ✅ LOGO */}
           <BrandLogo size="md" className="scale-95 sm:scale-100" />
 
           {/* SEARCH */}
@@ -72,13 +72,14 @@ export default function Navbar() {
           {/* RIGHT */}
           <div className="flex items-center gap-3 sm:gap-4">
 
-            {/* 🔥 EXPLORE FULL MENU */}
+            {/* 🔥 EXPLORE MENU */}
             <div className="relative">
               <button
                 onClick={() => setExploreOpen(!exploreOpen)}
                 className="flex items-center gap-1 text-sm font-semibold text-gray-700 hover:text-pink-500 dark:text-gray-300 transition"
               >
                 Explore
+
                 <motion.div animate={{ rotate: exploreOpen ? 180 : 0 }}>
                   <FaChevronDown className="text-xs" />
                 </motion.div>
@@ -90,7 +91,7 @@ export default function Navbar() {
                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    className="absolute left-0 mt-3 w-72 rounded-2xl bg-white/90 backdrop-blur-xl p-4 shadow-2xl dark:bg-gray-900/90"
+                    className="absolute right-0 sm:left-0 mt-3 w-72 rounded-2xl bg-white/90 backdrop-blur-xl p-4 shadow-2xl dark:bg-gray-900/90"
                   >
                     <div className="grid grid-cols-2 gap-4 text-sm">
 
@@ -99,6 +100,7 @@ export default function Navbar() {
                         <h4 className="font-bold mb-2 text-gray-800 dark:text-gray-200">
                           Quick Links
                         </h4>
+
                         <ul className="space-y-1">
                           {[
                             ["All Products", "/products"],
@@ -124,6 +126,7 @@ export default function Navbar() {
                         <h4 className="font-bold mb-2 text-gray-800 dark:text-gray-200">
                           Explore
                         </h4>
+
                         <ul className="space-y-1">
                           {[
                             ["Featured", "/#featured"],
@@ -142,8 +145,22 @@ export default function Navbar() {
                           ))}
                         </ul>
                       </div>
-
                     </div>
+
+                    {/* ✅ MOBILE LOGIN BUTTON INSIDE MENU */}
+                    {!session && (
+                      <div className="mt-4 border-t border-gray-200 pt-4 dark:border-gray-700 sm:hidden">
+                        <button
+                          onClick={() => {
+                            setExploreOpen(false);
+                            signIn();
+                          }}
+                          className="w-full rounded-xl bg-gradient-to-r from-pink-500 to-red-500 px-4 py-2 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.02] hover:shadow-pink-500/30"
+                        >
+                          Login
+                        </button>
+                      </div>
+                    )}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -175,7 +192,7 @@ export default function Navbar() {
               )}
             </button>
 
-            {/* AUTH */}
+            {/* DESKTOP LOGIN */}
             {!session ? (
               <button
                 onClick={() => signIn()}
